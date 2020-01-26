@@ -1,17 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28056800-4c5e-489c-bae1-cd7ccea82907" name="Default Changelist" comment="" />
+    <list default="true" id="28056800-4c5e-489c-bae1-cd7ccea82907" name="Default Changelist" comment="Init commit.">
+      <change afterPath="$PROJECT_DIR$/src/Main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bll/ListsReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bll/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/common/AddForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/common/InputForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/common/useLocalStorage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/common/validateForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/header/Header.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/header/HeaderPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/header/addListsForm/AddListsFormContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/WishesListsContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/ListContent/Wish.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/ListContent/Wish.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/ListFooter/ListFooter.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/ListFooter/listFooter.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/ListHeader/ListHeader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/ListHeader/listHeader.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/ListWrapper.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/listsContent/wishesList/listWrapper.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WwDTMudlnrWNlDyeNE5osL7CNE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="C:\Users\Original\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-1\192.7142.35\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects_Git\wishes-lists" />
+      <recent name="E:\Projects_Git\wishes-lists\src" />
+      <recent name="E:\Projects_Git\wishes-lists\node_modules" />
+      <recent name="E:\Projects_Git\wishes-lists\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects_Git\wishes-lists\src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -25,6 +77,21 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -36,10 +103,38 @@
       <option name="presentableId" value="Default" />
       <updated>1580051770787</updated>
       <workItem from="1580051777006" duration="38000" />
+      <workItem from="1580051816468" duration="3940000" />
+      <workItem from="1580056393910" duration="106000" />
+      <workItem from="1580056502195" duration="5831000" />
     </task>
+    <task id="LOCAL-00001" summary="Init commit.">
+      <created>1580062166586</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580062166586</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Init commit." />
   </component>
 </project>

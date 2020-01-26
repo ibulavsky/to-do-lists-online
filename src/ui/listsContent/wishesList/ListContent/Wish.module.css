@@ -1,0 +1,40 @@
+.listContainer {
+    width: 100%;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.inputContainer {
+    width: 100%;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+}
+
+.check {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    width: calc(100% - 167px);
+    /*border: 1px solid green;*/
+    word-wrap: break-word
+}
+
+.priority {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    margin: 9px 10px;
+}
