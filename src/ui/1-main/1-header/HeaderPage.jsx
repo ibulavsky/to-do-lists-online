@@ -1,7 +1,6 @@
 import React from "react";
 import AddFormContainer from "./addListsForm/AddListsFormContainer"
 import {Avatar, Button, PageHeader} from "antd"
-import {useSelector} from "react-redux"
 import styles from './Header.module.css'
 
 const HeaderPage = ({isAuth, loading, username}) => {

@@ -1,6 +1,9 @@
 const SET_LISTS = 'wishesListsAPP/ListsReducer/SET_LISTS';
 const SET_LISTS_LOADING = 'wishesListsAPP/ListsReducer/SET_LISTS_LOADING';
 const SET_ERROR_MESSAGE = 'wishesListsAPP/ListsReducer/SET_ERROR_MESSAGE';
+const SET_WISHES = 'wishesListsAPP/ListsReducer/SET_WISHES';
+
+
 const ADD_WISHLIST = 'wishesListsAPP/ListsReducer/ADD_WISHLIST';
 const DELETE_WISHLIST = 'wishesListsAPP/ListsReducer/DELETE_WISHLIST';
 const UPDATE_WISHLIST = 'wishesListsAPP/ListsReducer/UPDATE_WISHLIST';
@@ -13,8 +16,21 @@ let initialState = {
     wishesLists: [
         {
             name: 'ListTOP',
-            id: 1,
-            wishes: [{title: 'Wish', priority: 2, status: false, id: 1}
+            id: '98e8465e-894f-4491-905a-2111f823b728',
+            wishes: [
+                {
+                    id: '515f5f49-0a8b-4fd3-a298-b96426c062cc',
+                    title: 'ads',
+                    description: null,
+                    completed: false,
+                    todoListId: '98e8465e-894f-4491-905a-2111f823b728',
+                    order: 0,
+                    status: 0,
+                    priority: 1,
+                    startDate: null,
+                    deadline: null,
+                    addedDate: '2019-12-11T18:20:58.023'
+                }
             ]
         }
     ],
@@ -27,7 +43,7 @@ const listsReducer = (state = initialState, action) => {
         case SET_LISTS:
             return {
                 ...state,
-                wishesLists: [action.wishesLists],
+                wishesLists: [...action.wishesLists],
             };
         case SET_LISTS_LOADING:
             return {
@@ -38,6 +54,19 @@ const listsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMessage: action.errorMessage,
+            };
+        case SET_WISHES:
+            return {
+                ...state,
+                wishesLists: state.wishesLists.map(l => {
+                    if (l.id === action.listId) {
+                        return {
+                            ...l, wishes: [...action.wishes]
+                        }
+                    } else {
+                        return l
+                    }
+                }),
             };
         case ADD_WISHLIST:
             return {
@@ -123,6 +152,9 @@ export default listsReducer
 export const setLists = wishesLists => ({type: SET_LISTS, wishesLists})
 export const setListsLoading = listsLoading => ({type: SET_LISTS_LOADING, listsLoading})
 export const setErrorMessage = errorMessage => ({type: SET_ERROR_MESSAGE, errorMessage})
+export const setWishes = (listId, wishes) => ({type: SET_WISHES, listId, wishes})
+
+
 export const addWishesList = newWishesList => ({type: ADD_WISHLIST, newWishesList})
 export const deleteWishesList = wishesListId => ({type: DELETE_WISHLIST, wishesListId})
 export const updateWishesList = (wishesListId, payload) => ({type: UPDATE_WISHLIST, wishesListId, payload})

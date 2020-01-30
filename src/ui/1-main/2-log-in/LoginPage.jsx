@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Button, Checkbox, Form, Icon, Input} from "antd"
-// import {useSelector} from "react-redux"
 import styles from './Login.module.css'
 
 class LoginPage extends Component {

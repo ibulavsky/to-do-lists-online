@@ -7,11 +7,15 @@ import {Icon} from "antd"
 const WishesListsContainer = () => {
 
     const dispatch = useDispatch()
-    const {isListsLoading, wishesLists} = useSelector((store) => store.lists)
 
     useEffect(() => {
         dispatch(getLists())
     }, [])
+
+
+    const {isListsLoading, wishesLists} = useSelector((store) => store.lists)
+    console.log('wl' ,wishesLists)
+
     const listsArr = wishesLists.map((l) => {
         if (l) {
             return <ListWrapper key={l.id} l={l}/>
