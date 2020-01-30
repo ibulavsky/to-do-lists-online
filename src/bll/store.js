@@ -3,9 +3,6 @@ import ThunkMiddleware from 'redux-thunk'
 import listsReducer from "./ListsReducer";
 import authReducer from "./AuthReducer"
 
-
-// пока у меня будет один редьюсер,
-// но оставляю возможность для расширения
 let reducers = combineReducers({
     lists: listsReducer,
     auth: authReducer,

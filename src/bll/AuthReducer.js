@@ -4,7 +4,7 @@ const SET_LOADING = 'wishesListsAPP/AuthReducer/SET_LOADING';
 
 
 let initialState = {
-    isAuth: false,
+    isAuth: true,
     loading: false,
     username: 'igor'
 }

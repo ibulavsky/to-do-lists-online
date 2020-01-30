@@ -1,4 +1,6 @@
-const RESTORE_STATE = 'wishesListsAPP/ListsReducer/RESTORE_STATE';
+const SET_LISTS = 'wishesListsAPP/ListsReducer/SET_LISTS';
+const SET_LISTS_LOADING = 'wishesListsAPP/ListsReducer/SET_LISTS_LOADING';
+const SET_ERROR_MESSAGE = 'wishesListsAPP/ListsReducer/SET_ERROR_MESSAGE';
 const ADD_WISHLIST = 'wishesListsAPP/ListsReducer/ADD_WISHLIST';
 const DELETE_WISHLIST = 'wishesListsAPP/ListsReducer/DELETE_WISHLIST';
 const UPDATE_WISHLIST = 'wishesListsAPP/ListsReducer/UPDATE_WISHLIST';
@@ -9,21 +11,33 @@ const UPDATE_WISH = 'wishesListsAPP/ListsReducer/UPDATE_WISH';
 
 let initialState = {
     wishesLists: [
-        //     {
-        //     name: 'ListTOP',
-        //     id: 1,
-        //     wishes: [{title: 'Wish', priority: 2, status: false, id: 1}
-        //     ]
-        // }
+        {
+            name: 'ListTOP',
+            id: 1,
+            wishes: [{title: 'Wish', priority: 2, status: false, id: 1}
+            ]
+        }
     ],
+    isListsLoading: false,
+    errorMessage: '',
 }
 
 const listsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case RESTORE_STATE:
+        case SET_LISTS:
             return {
                 ...state,
-                wishesLists: [...action.restoredWishesList, ...state.wishesLists],
+                wishesLists: [action.wishesLists],
+            };
+        case SET_LISTS_LOADING:
+            return {
+                ...state,
+                isListsLoading: action.listsLoading,
+            };
+        case SET_ERROR_MESSAGE:
+            return {
+                ...state,
+                errorMessage: action.errorMessage,
             };
         case ADD_WISHLIST:
             return {
@@ -106,7 +120,9 @@ const listsReducer = (state = initialState, action) => {
 
 export default listsReducer
 
-export const restoreStateList = restoredWishesList => ({type: RESTORE_STATE, restoredWishesList})
+export const setLists = wishesLists => ({type: SET_LISTS, wishesLists})
+export const setListsLoading = listsLoading => ({type: SET_LISTS_LOADING, listsLoading})
+export const setErrorMessage = errorMessage => ({type: SET_ERROR_MESSAGE, errorMessage})
 export const addWishesList = newWishesList => ({type: ADD_WISHLIST, newWishesList})
 export const deleteWishesList = wishesListId => ({type: DELETE_WISHLIST, wishesListId})
 export const updateWishesList = (wishesListId, payload) => ({type: UPDATE_WISHLIST, wishesListId, payload})

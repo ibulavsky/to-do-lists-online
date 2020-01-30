@@ -1,25 +1,17 @@
 import React, {useEffect} from "react"
 import ListWrapper from "./wishesList/ListWrapper"
 import {useDispatch, useSelector} from "react-redux"
-import {useLocalStorage} from "../../0-common/useLocalStorage"
-import {restoreStateList} from "../../../bll/ListsReducer"
+import {getLists} from "../../../bll/Lists-thunks"
+import {Icon} from "antd"
 
 const WishesListsContainer = () => {
 
     const dispatch = useDispatch()
-
-    const lists = useSelector((store) => store.lists.wishesLists)
-
-    const [wishesLists, setLists] = useLocalStorage('Lists', lists)
+    const {isListsLoading, wishesLists} = useSelector((store) => store.lists)
 
     useEffect(() => {
-        dispatch(restoreStateList(wishesLists))
+        dispatch(getLists())
     }, [])
-
-    useEffect(() => {
-        setLists(lists)
-    })
-
     const listsArr = wishesLists.map((l) => {
         if (l) {
             return <ListWrapper key={l.id} l={l}/>
@@ -27,10 +19,14 @@ const WishesListsContainer = () => {
         return null
     })
 
-    return (
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
-            {listsArr}
-        </div>
+    return (<>
+            {isListsLoading
+                ? <Icon type="loading" style={{fontSize: '50px'}}/>
+                : <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+                    {listsArr}
+                </div>
+            }
+        </>
     )
 }
 
