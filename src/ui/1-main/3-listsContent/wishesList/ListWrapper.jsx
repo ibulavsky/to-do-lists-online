@@ -1,13 +1,12 @@
-import {Alert, Button, Icon, Input, List, Popconfirm} from "antd"
+import {Icon, List, Popconfirm} from "antd"
 import React, {useEffect, useState} from "react"
-import Wish from "./ListContent/Wish"
-import ListHeader from "./ListHeader/ListHeader"
-import ListFooter from "./ListFooter/ListFooter"
+import Wish from "./1-ListContent/Wish"
+import ListHeader from "./0-ListHeader/ListHeader"
+import ListFooter from "./2-ListFooter/ListFooter"
 import styles from './listWrapper.module.css'
 import {useDispatch} from "react-redux"
-import {deleteWishesList, updateWishesList} from "../../../bll/ListsReducer"
-import {validateItem} from "../../common/validateForm"
-import InputForm from "../../common/InputForm"
+import {deleteWishesList, updateWishesList} from "../../../../bll/ListsReducer"
+import InputForm from "../../../0-common/InputForm"
 
 const ListWrapper = ({l, ...props}) => {
     const [isInputShow, setInputShow] = useState(false)

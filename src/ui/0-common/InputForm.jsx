@@ -1,8 +1,7 @@
-import {Alert, Button, Icon, Input} from "antd"
+import {Alert, Icon, Input} from "antd"
 import React, {useState} from "react"
 import {validateItem} from "./validateForm"
-import {updateWishesList} from "../../bll/ListsReducer"
-import styles from "../listsContent/wishesList/listWrapper.module.css"
+import styles from "../1-main/3-listsContent/wishesList/listWrapper.module.css"
 
 const InputForm = ({itemTitle, changeItemTitle, addItem, undo}) => {
 

@@ -1,10 +1,10 @@
 import React, {useState} from "react"
-import AddForm from "../../../common/AddForm"
+import AddForm from "../../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
-import {addWish} from "../../../../bll/ListsReducer"
+import {addWish} from "../../../../../bll/ListsReducer"
 import styles from './listHeader.module.css'
 import {Alert} from "antd"
-import {validateItem} from "../../../common/validateForm"
+import {validateItem} from "../../../../0-common/validateForm"
 
 const ListHeader = (props) => {
     const [errorMessage, setError] = useState(null)

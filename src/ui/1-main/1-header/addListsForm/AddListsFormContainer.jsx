@@ -1,8 +1,8 @@
 import React, {useState} from "react"
-import AddForm from "../../common/AddForm"
+import AddForm from "../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
-import {addWishesList} from "../../../bll/ListsReducer"
-import {validateItem} from "../../common/validateForm"
+import {addWishesList} from "../../../../bll/ListsReducer"
+import {validateItem} from "../../../0-common/validateForm"
 import {Alert} from "antd"
 
 const AddListsFormContainer = () => {

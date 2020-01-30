@@ -1,8 +1,8 @@
 import React, {useEffect} from "react"
 import ListWrapper from "./wishesList/ListWrapper"
 import {useDispatch, useSelector} from "react-redux"
-import {useLocalStorage} from "../common/useLocalStorage"
-import {restoreStateList} from "../../bll/ListsReducer"
+import {useLocalStorage} from "../../0-common/useLocalStorage"
+import {restoreStateList} from "../../../bll/ListsReducer"
 
 const WishesListsContainer = () => {
 
@@ -24,6 +24,7 @@ const WishesListsContainer = () => {
         if (l) {
             return <ListWrapper key={l.id} l={l}/>
         }
+        return null
     })
 
     return (

@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react"
-import {Alert, Button, Checkbox, Icon, Input, Popconfirm, Select} from 'antd'
+import {Checkbox, Icon, Popconfirm, Select} from 'antd'
 import styles from './Wish.module.css'
 import {useDispatch} from "react-redux"
-import {deleteWish, updateWish} from "../../../../bll/ListsReducer"
-import {validateItem} from "../../../common/validateForm"
-import InputForm from "../../../common/InputForm"
+import {deleteWish, updateWish} from "../../../../../bll/ListsReducer"
+import InputForm from "../../../../0-common/InputForm"
 
 const Wish = ({wishItem, listId}) => {
 

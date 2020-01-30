@@ -1,0 +1,17 @@
+.AddForm {
+    flex-direction: row;
+    background-color: blue;
+}
+
+.avatar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.caption {
+   margin-left: 10px ;
+}
+
+.button {
+   margin-left: 10px ;
+}

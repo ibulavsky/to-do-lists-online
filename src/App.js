@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Main from "./Main"
+import Main from "./ui/1-main/Main"
 import store from "./bll/store"
 import {Provider} from "react-redux"
 
