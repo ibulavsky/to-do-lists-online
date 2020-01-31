@@ -1,9 +1,9 @@
 import React, {useState} from "react"
 import AddForm from "../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
-import {addWishesList} from "../../../../bll/ListsReducer"
 import {validateItem} from "../../../0-common/validateForm"
 import {Alert} from "antd"
+import {addLists} from "../../../../bll/Lists-thunks"
 
 const AddListsFormContainer = () => {
 
@@ -16,13 +16,10 @@ const AddListsFormContainer = () => {
             if (validateItem(itemName)) {
                 setError(validateItem(itemName))
             } else {
-                const newWishList = [{
-                    name: itemName,
-                    wishes: [],
-                    id: +new Date()
-                }]
-                dispatch(addWishesList(...newWishList)
-                )
+                const newWishList = {
+                    title: itemName
+                };
+                dispatch(addLists(newWishList))
                 changeItemName('')
             }
         },
