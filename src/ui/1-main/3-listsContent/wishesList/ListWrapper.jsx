@@ -5,9 +5,9 @@ import ListHeader from "./0-ListHeader/ListHeader"
 import ListFooter from "./2-ListFooter/ListFooter"
 import styles from './listWrapper.module.css'
 import {useDispatch} from "react-redux"
-import {deleteList, updateList} from "../../../../bll/ListsReducer"
+import {deleteList, updateList} from "../../../../bll/lists/ListsReducer"
 import InputForm from "../../../0-common/InputForm"
-import {getTasks} from "../../../../bll/Lists-thunks"
+import {getTasks} from "../../../../bll/lists/Lists-thunks"
 
 const ListWrapper = ({l, ...props}) => {
 
@@ -22,7 +22,7 @@ const ListWrapper = ({l, ...props}) => {
 
     useEffect(() => {
       dispatch(getTasks(l.id))
-    }, [])
+    }, [dispatch, l.id])
 
     const tasks = l.tasks && l.tasks
         .filter(t => {

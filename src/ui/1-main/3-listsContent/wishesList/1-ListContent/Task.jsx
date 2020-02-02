@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import {Checkbox, Icon, Popconfirm, Select} from 'antd'
 import styles from './Task.module.css'
 import {useDispatch} from "react-redux"
-import {deleteTask, updateTask} from "../../../../../bll/ListsReducer"
+import {deleteTask, updateTask} from "../../../../../bll/lists/ListsReducer"
 import InputForm from "../../../../0-common/InputForm"
 
 const Task = ({taskItem, listId}) => {

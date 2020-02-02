@@ -1,14 +1,18 @@
 import React, {Component} from "react";
 import {Button, Checkbox, Form, Icon, Input} from "antd"
 import styles from './Login.module.css'
+import {login} from "../../../bll/auth/Auth-thunks"
+import {connect} from "react-redux"
+import {compose} from "redux"
 
 class LoginPage extends Component {
+
 
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                this.props.login(values.email, values.password, values.rememberMe)
             }
         });
     };
@@ -65,6 +69,9 @@ class LoginPage extends Component {
 }
 
 
-const WrappedNormalLoginForm = Form.create({name: 'normal_login'})(LoginPage);
+const WrappedNormalLoginForm = compose(
+    Form.create({name: 'normal_login'}),
+    connect(null, {login})
+)(LoginPage);
 
 export default WrappedNormalLoginForm

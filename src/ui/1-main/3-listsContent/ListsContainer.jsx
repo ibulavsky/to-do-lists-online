@@ -1,7 +1,7 @@
 import React, {useEffect} from "react"
 import ListWrapper from "./wishesList/ListWrapper"
 import {useDispatch, useSelector} from "react-redux"
-import {getLists} from "../../../bll/Lists-thunks"
+import {getLists} from "../../../bll/lists/Lists-thunks"
 import {Icon} from "antd"
 import styles from './ListsContainer.module.css'
 

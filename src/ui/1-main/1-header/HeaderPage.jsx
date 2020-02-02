@@ -2,8 +2,16 @@ import React from "react";
 import AddFormContainer from "./addListsForm/AddListsFormContainer"
 import {Avatar, Button, PageHeader} from "antd"
 import styles from './Header.module.css'
+import {useDispatch} from "react-redux"
+import {logout} from "../../../bll/auth/Auth-thunks"
 
-const HeaderPage = ({isAuth, loading, username}) => {
+const HeaderPage = ({isAuth, loading, email}) => {
+
+    const dispatch = useDispatch()
+
+    const onLogOut = () => {
+        dispatch(logout())
+    }
 
     const stylesAnt = {
         borderBottom: 'white 1px solid',
@@ -32,13 +40,13 @@ const HeaderPage = ({isAuth, loading, username}) => {
                 {isAuth
                     ? <figure className={styles.avatar}>
                         <Avatar size={30} icon="user"/>
-                        <figurecaption className={styles.caption}>{username}</figurecaption>
+                        <figurecaption className={styles.caption}>{email}</figurecaption>
                         <Button
                             className={styles.button}
                             type="primary"
                             icon="user"
                             loading={loading}
-                            onClick={() => {}}>
+                            onClick={onLogOut}>
                             Log out
                         </Button>
                     </figure>

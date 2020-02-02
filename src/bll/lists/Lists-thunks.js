@@ -1,5 +1,5 @@
 // THUNK CREATOR:
-import {listsAPI} from "../api/api"
+import {listsAPI} from "../../api/2-lists-api"
 import {addList, setErrorMessage, setLists, setListsLoading, setTasks} from "./ListsReducer"
 
 export const getLists = () => async (dispatch) => {

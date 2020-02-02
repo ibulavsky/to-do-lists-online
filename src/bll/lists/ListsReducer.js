@@ -61,7 +61,7 @@ const listsReducer = (state = initialState, action) => {
                 lists: state.lists.map(l => {
                     if (l.id === action.listId) {
                         return {
-                            ...l, tasks: [...action.wishes]
+                            ...l, tasks: [...action.tasks]
                         }
                     } else {
                         return l

@@ -3,7 +3,7 @@ import AddForm from "../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
 import {validateItem} from "../../../0-common/validateForm"
 import {Alert} from "antd"
-import {addLists} from "../../../../bll/Lists-thunks"
+import {addLists} from "../../../../bll/lists/Lists-thunks"
 
 const AddListsFormContainer = () => {
 

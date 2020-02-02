@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import AddForm from "../../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
-import {addTask} from "../../../../../bll/ListsReducer"
+import {addTask} from "../../../../../bll/lists/ListsReducer"
 import styles from './listHeader.module.css'
 import {Alert} from "antd"
 import {validateItem} from "../../../../0-common/validateForm"
