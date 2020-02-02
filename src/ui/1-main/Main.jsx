@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderPage from "./1-header/HeaderPage"
 import {Icon, Layout} from "antd"
-import WishesListsContainer from "./3-listsContent/WishesListsContainer"
+import ListsContainer from "./3-listsContent/ListsContainer"
 import {useSelector} from "react-redux"
 import LoginPage from "./2-log-in/LoginPage"
 
@@ -19,7 +19,7 @@ const Main = () => {
                     : <>
                         {isAuth
                             ? <>
-                                <WishesListsContainer/>
+                                <ListsContainer/>
                             </>
                             : <>
                                 <LoginPage/>

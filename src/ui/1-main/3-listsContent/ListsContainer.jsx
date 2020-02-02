@@ -3,8 +3,9 @@ import ListWrapper from "./wishesList/ListWrapper"
 import {useDispatch, useSelector} from "react-redux"
 import {getLists} from "../../../bll/Lists-thunks"
 import {Icon} from "antd"
+import styles from './ListsContainer.module.css'
 
-const WishesListsContainer = () => {
+const ListsContainer = () => {
 
     const dispatch = useDispatch()
 
@@ -13,10 +14,9 @@ const WishesListsContainer = () => {
     }, [])
 
 
-    const {isListsLoading, wishesLists} = useSelector((store) => store.lists)
-    console.log('wl' ,wishesLists)
+    const {isListsLoading, lists} = useSelector((store) => store.lists)
 
-    const listsArr = wishesLists.map((l) => {
+    const listsArr = lists.map((l) => {
         if (l) {
             return <ListWrapper key={l.id} l={l}/>
         }
@@ -26,7 +26,7 @@ const WishesListsContainer = () => {
     return (<>
             {isListsLoading
                 ? <Icon type="loading" style={{fontSize: '50px'}}/>
-                : <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+                : <div className={styles.listsWrap}>
                     {listsArr}
                 </div>
             }
@@ -34,4 +34,4 @@ const WishesListsContainer = () => {
     )
 }
 
-export default WishesListsContainer
+export default ListsContainer

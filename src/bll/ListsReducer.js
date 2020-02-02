@@ -1,23 +1,23 @@
-const SET_LISTS = 'wishesListsAPP/ListsReducer/SET_LISTS';
-const SET_LISTS_LOADING = 'wishesListsAPP/ListsReducer/SET_LISTS_LOADING';
-const SET_ERROR_MESSAGE = 'wishesListsAPP/ListsReducer/SET_ERROR_MESSAGE';
-const SET_WISHES = 'wishesListsAPP/ListsReducer/SET_WISHES';
+const SET_LISTS = 'ListsAPP/ListsReducer/SET_LISTS';
+const SET_LISTS_LOADING = 'ListsAPP/ListsReducer/SET_LISTS_LOADING';
+const SET_ERROR_MESSAGE = 'ListsAPP/ListsReducer/SET_ERROR_MESSAGE';
+const SET_TASKS = 'ListsAPP/ListsReducer/SET_TASKS';
 
 
-const ADD_WISHLIST = 'wishesListsAPP/ListsReducer/ADD_WISHLIST';
-const DELETE_WISHLIST = 'wishesListsAPP/ListsReducer/DELETE_WISHLIST';
-const UPDATE_WISHLIST = 'wishesListsAPP/ListsReducer/UPDATE_WISHLIST';
-const ADD_WISH = 'wishesListsAPP/ListsReducer/ADD_WISH';
-const DELETE_WISH = 'wishesListsAPP/ListsReducer/DELETE_WISH';
-const UPDATE_WISH = 'wishesListsAPP/ListsReducer/UPDATE_WISH';
+const ADD_LIST = 'ListsAPP/ListsReducer/ADD_LIST';
+const DELETE_LIST = 'ListsAPP/ListsReducer/DELETE_LIST';
+const UPDATE_LIST = 'ListsAPP/ListsReducer/UPDATE_LIST';
+const ADD_TASK = 'ListsAPP/ListsReducer/ADD_TASK';
+const DELETE_TASK = 'ListsAPP/ListsReducer/DELETE_TASK';
+const UPDATE_TASK = 'ListsAPP/ListsReducer/UPDATE_TASK';
 
 
 let initialState = {
-    wishesLists: [
+    lists: [
         {
             name: 'ListTOP',
             id: '98e8465e-894f-4491-905a-2111f823b728',
-            wishes: [
+            tasks: [
                 {
                     id: '515f5f49-0a8b-4fd3-a298-b96426c062cc',
                     title: 'ads',
@@ -43,7 +43,7 @@ const listsReducer = (state = initialState, action) => {
         case SET_LISTS:
             return {
                 ...state,
-                wishesLists: [...action.wishesLists],
+                lists: [...action.lists],
             };
         case SET_LISTS_LOADING:
             return {
@@ -55,66 +55,66 @@ const listsReducer = (state = initialState, action) => {
                 ...state,
                 errorMessage: action.errorMessage,
             };
-        case SET_WISHES:
+        case SET_TASKS:
             return {
                 ...state,
-                wishesLists: state.wishesLists.map(l => {
+                lists: state.lists.map(l => {
                     if (l.id === action.listId) {
                         return {
-                            ...l, wishes: [...action.wishes]
+                            ...l, tasks: [...action.wishes]
                         }
                     } else {
                         return l
                     }
                 }),
             };
-        case ADD_WISHLIST:
+        case ADD_LIST:
             return {
                 ...state,
-                wishesLists: [action.newWishesList, ...state.wishesLists],
+                lists: [action.newList, ...state.lists],
             };
-        case DELETE_WISHLIST:
+        case DELETE_LIST:
             return {
                 ...state,
-                wishesLists: state.wishesLists.filter(wl => {
-                    if (wl.id !== action.wishesListId) {
+                lists: state.lists.filter(wl => {
+                    if (wl.id !== action.listId) {
                         return true
                     } else {
                         return false
                     }
                 })
             };
-        case UPDATE_WISHLIST:
+        case UPDATE_LIST:
             return {
                 ...state,
-                wishesLists: state.wishesLists.map(wl => {
-                    if (wl.id === action.wishesListId) {
+                lists: state.lists.map(wl => {
+                    if (wl.id === action.listId) {
                         return {...wl, ...action.payload}
                     }
                     return wl
                 })
             };
-        case ADD_WISH:
+        case ADD_TASK:
             return {
                 ...state,
-                wishesLists: state.wishesLists.map(l => {
+                lists: state.lists.map(l => {
                     if (l.id === action.listId) {
                         return {
-                            ...l, wishes: [action.newWish, ...l.wishes]
+                            ...l, tasks: [action.newTask, ...l.tasks]
                         }
                     } else {
                         return l
                     }
                 }),
             };
-        case DELETE_WISH:
+        case DELETE_TASK:
             return {
                 ...state,
-                wishesLists: state.wishesLists.map(l => {
+                lists: state.lists.map(l => {
                     if (l.id === action.listId) {
                         return {
-                            ...l, wishes: l.wishes.filter(w => {
-                                if (w.id !== action.wishId) {
+                            ...l, tasks: l.tasks.filter(w => {
+                                if (w.id !== action.taskId) {
                                     return true
                                 }
                                 return false
@@ -124,14 +124,14 @@ const listsReducer = (state = initialState, action) => {
                     return l
                 })
             };
-        case UPDATE_WISH:
+        case UPDATE_TASK:
             return {
                 ...state,
-                wishesLists: state.wishesLists.map(l => {
+                lists: state.lists.map(l => {
                         if (l.id === action.listId) {
                             return {
-                                ...l, wishes: l.wishes.map(w => {
-                                    if (w.id === action.wishId) {
+                                ...l, tasks: l.tasks.map(w => {
+                                    if (w.id === action.taskId) {
                                         return {...w, ...action.payload}
                                     }
                                     return w
@@ -149,15 +149,15 @@ const listsReducer = (state = initialState, action) => {
 
 export default listsReducer
 
-export const setLists = wishesLists => ({type: SET_LISTS, wishesLists})
+export const setLists = lists => ({type: SET_LISTS, lists})
 export const setListsLoading = listsLoading => ({type: SET_LISTS_LOADING, listsLoading})
 export const setErrorMessage = errorMessage => ({type: SET_ERROR_MESSAGE, errorMessage})
-export const setWishes = (listId, wishes) => ({type: SET_WISHES, listId, wishes})
+export const setTasks = (listId, tasks) => ({type: SET_TASKS, listId, tasks})
 
 
-export const addWishesList = newWishesList => ({type: ADD_WISHLIST, newWishesList})
-export const deleteWishesList = wishesListId => ({type: DELETE_WISHLIST, wishesListId})
-export const updateWishesList = (wishesListId, payload) => ({type: UPDATE_WISHLIST, wishesListId, payload})
-export const addWish = (newWish, listId) => ({type: ADD_WISH, newWish, listId})
-export const deleteWish = (listId, wishId) => ({type: DELETE_WISH, listId, wishId})
-export const updateWish = (listId, wishId, payload) => ({type: UPDATE_WISH, listId, wishId, payload})
+export const addList = newList => ({type: ADD_LIST, newList})
+export const deleteList = listId => ({type: DELETE_LIST, listId})
+export const updateList = (listId, payload) => ({type: UPDATE_LIST, listId, payload})
+export const addTask = (newTask, listId) => ({type: ADD_TASK, newTask, listId})
+export const deleteTask = (listId, taskId) => ({type: DELETE_TASK, listId, taskId})
+export const updateTask = (listId, taskId, payload) => ({type: UPDATE_TASK, listId, taskId, payload})

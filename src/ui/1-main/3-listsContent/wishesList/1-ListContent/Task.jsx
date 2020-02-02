@@ -1,53 +1,53 @@
 import React, {useEffect, useState} from "react"
 import {Checkbox, Icon, Popconfirm, Select} from 'antd'
-import styles from './Wish.module.css'
+import styles from './Task.module.css'
 import {useDispatch} from "react-redux"
-import {deleteWish, updateWish} from "../../../../../bll/ListsReducer"
+import {deleteTask, updateTask} from "../../../../../bll/ListsReducer"
 import InputForm from "../../../../0-common/InputForm"
 
-const Wish = ({wishItem, listId}) => {
+const Task = ({taskItem, listId}) => {
 
     const [isChangeModeShow, setChangeModeShow] = useState(false)
-    const [wishTitle, changeWishTitle] = useState(wishItem.title)
+    const [taskTitle, changeTaskTitle] = useState(taskItem.title)
     const {Option} = Select;
 
     const text = 'Are you sure to delete this wish?'
 
     useEffect(() => {
-        changeWishTitle(wishItem.title)
-    }, [wishItem.title])
+        changeTaskTitle(taskItem.title)
+    }, [taskItem.title])
 
 //redux
     const dispatch = useDispatch();
 
     const onPriorityChange = (value) => {
-        dispatch(updateWish(listId, wishItem.id, {priority: value}))
-        console.log(`priority selected ${value} - id ${wishItem.id}`);
+        dispatch(updateTask(listId, taskItem.id, {priority: value}))
+        console.log(`priority selected ${value} - id ${taskItem.id}`);
     }
-    const onUpdateWish = (wishTitle) => {
-        dispatch(updateWish(listId, wishItem.id, {title: wishTitle}))
+    const onUpdateTask = (taskTitle) => {
+        dispatch(updateTask(listId, taskItem.id, {title: taskTitle}))
         setChangeModeShow(false)
     }
-    const onDeleteWish = () => dispatch(deleteWish(listId, wishItem.id))
-    const onChangeWishStatus = (e) => {
-        dispatch(updateWish(listId, wishItem.id, {status: (e.target.checked)}))
+    const onDeleteTask = () => dispatch(deleteTask(listId, taskItem.id))
+    const onChangeTaskStatus = (e) => {
+        dispatch(updateTask(listId, taskItem.id, {status: (e.target.checked)}))
     }
 
     return (
         <>
             <span className={styles.listContainer}>
                                {isChangeModeShow ? <>
-                                       <InputForm itemTitle={wishTitle} changeItemTitle={changeWishTitle}
-                                                  addItem={onUpdateWish}
+                                       <InputForm itemTitle={taskTitle} changeItemTitle={changeTaskTitle}
+                                                  addItem={onUpdateTask}
                                                   undo={() => setChangeModeShow(false)}/>
                                    </>
                                    : <>
-                                       <Checkbox className={styles.check} checked={wishItem.status}
-                                                 onChange={(e) => onChangeWishStatus(e)}> </Checkbox>
+                                       <Checkbox className={styles.check} checked={taskItem.status}
+                                                 onChange={(e) => onChangeTaskStatus(e)}> </Checkbox>
                                        <article className={styles.text}>
-                                           {wishItem.title}
+                                           {taskItem.title}
                                        </article>
-                                       <Select defaultValue={wishItem.priority} style={{width: 120}}
+                                       <Select defaultValue={taskItem.priority} style={{width: 120}}
                                                className={styles.priority}
                                                onChange={(value) => onPriorityChange(value)}>
                                            <Option value={3}>High</Option>
@@ -56,7 +56,7 @@ const Wish = ({wishItem, listId}) => {
                                        </Select>
                                        <Icon type="edit" className={styles.icon}
                                              onClick={() => setChangeModeShow(true)}/>
-                                       <Popconfirm placement="right" title={text} onConfirm={onDeleteWish} okText="Yes"
+                                       <Popconfirm placement="right" title={text} onConfirm={onDeleteTask} okText="Yes"
                                                    cancelText="No">
                                            <Icon type="delete" className={styles.icon}/>
                                        </Popconfirm>
@@ -67,4 +67,4 @@ const Wish = ({wishItem, listId}) => {
     )
 }
 
-export default Wish
+export default Task

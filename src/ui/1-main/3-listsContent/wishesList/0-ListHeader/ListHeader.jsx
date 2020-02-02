@@ -1,34 +1,34 @@
 import React, {useState} from "react"
 import AddForm from "../../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
-import {addWish} from "../../../../../bll/ListsReducer"
+import {addTask} from "../../../../../bll/ListsReducer"
 import styles from './listHeader.module.css'
 import {Alert} from "antd"
 import {validateItem} from "../../../../0-common/validateForm"
 
 const ListHeader = (props) => {
     const [errorMessage, setError] = useState(null)
-    const [wishName, changeWish] = useState('')
+    const [taskTitle, changeTaskTitle] = useState('')
 
     const dispatch = useDispatch()
 
     const addFormCallbacks = {
         addItem: () => {
-            if (validateItem(wishName)) {
-                setError(validateItem(wishName))
+            if (validateItem(taskTitle)) {
+                setError(validateItem(taskTitle))
             } else {
-                const newWish = {
-                    title: wishName,
+                const newTask = {
+                    title: taskTitle,
                     priority: 2,
                     id: +new Date()
                 };
-                dispatch(addWish(newWish, props.listId));
-                changeWish('')
+                dispatch(addTask(newTask, props.listId));
+                changeTaskTitle('')
             }
         },
         onChangeItemName: (e) => {
             setError(null)
-            changeWish(e.currentTarget.value)
+            changeTaskTitle(e.currentTarget.value)
         }
     }
 
@@ -40,7 +40,7 @@ const ListHeader = (props) => {
         <>
             {errorMessage && <Alert
                 message={null}
-                style={{width: '307px', margin: '8px 0 8px 8px'}}
+                className={styles.alertMessage}
                 description={errorMessage}
                 type="warning"
                 closable
@@ -49,7 +49,7 @@ const ListHeader = (props) => {
             />
             }
             <div className={styles.listHeader}>
-                <AddForm item={'wish'} itemName={wishName} {...addFormCallbacks} />
+                <AddForm item={'wish'} itemName={taskTitle} {...addFormCallbacks} />
             </div>
         </>
     )

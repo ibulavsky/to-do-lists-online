@@ -1,13 +1,13 @@
 import {Icon, List, Popconfirm} from "antd"
 import React, {useEffect, useState} from "react"
-import Wish from "./1-ListContent/Wish"
+import Task from "./1-ListContent/Task"
 import ListHeader from "./0-ListHeader/ListHeader"
 import ListFooter from "./2-ListFooter/ListFooter"
 import styles from './listWrapper.module.css'
 import {useDispatch} from "react-redux"
-import {deleteWishesList, updateWishesList} from "../../../../bll/ListsReducer"
+import {deleteList, updateList} from "../../../../bll/ListsReducer"
 import InputForm from "../../../0-common/InputForm"
-import {getWishes} from "../../../../bll/Lists-thunks"
+import {getTasks} from "../../../../bll/Lists-thunks"
 
 const ListWrapper = ({l, ...props}) => {
 
@@ -20,42 +20,40 @@ const ListWrapper = ({l, ...props}) => {
 
     const dispatch = useDispatch()
 
-
     useEffect(() => {
-        console.log(l.id)
-        dispatch(getWishes(l.id))
+      dispatch(getTasks(l.id))
     }, [])
 
-    const wishes = l.wishes
-    //     .filter(w => {
-    //     switch (filterValue) {
-    //         case "All":
-    //             return true;
-    //         case "Active":
-    //             return !w.status;
-    //         case "Completed":
-    //             return w.status;
-    //         default:
-    //             return true
-    //     }
-    // })
+    const tasks = l.tasks && l.tasks
+        .filter(t => {
+            switch (filterValue) {
+                case "All":
+                    return true;
+                case "Active":
+                    return !t.status;
+                case "Completed":
+                    return t.status;
+                default:
+                    return true
+            }
+        })
     //
     // // component did update
     // useEffect(() => {
-    //     // changeWishes(l.wishes)
-    // }, [l.wishes])
+    //     // changeWishes(l.tasks)
+    // }, [l.tasks])
     //
     // useEffect(() => {
     //     changeListTitle(l.name)
     // }, [l.name])
 
     const deleteList = () => {
-    //     dispatch(deleteWishesList(l.id))
+        //     dispatch(deleteWishesList(l.id))
     }
     //
     const updateList = (itemTitle) => {
-    //     dispatch(updateWishesList(l.id, {name: itemTitle}))
-    //     setInputShow(false)
+        //     dispatch(updateWishesList(l.id, {name: itemTitle}))
+        //     setInputShow(false)
     }
 
     return (
@@ -84,10 +82,10 @@ const ListWrapper = ({l, ...props}) => {
                     header={<ListHeader listId={l.id}/>}
                     footer={<ListFooter filterValue={filterValue} changeFilter={onChangeFilter}/>}
                     bordered
-                    dataSource={wishes}
+                    dataSource={tasks}
                     renderItem={item => (
                         <List.Item>
-                            <Wish listId={l.id} wishItem={item}/>
+                            <Task listId={l.id} taskItem={item}/>
                         </List.Item>
                     )}
                 />
