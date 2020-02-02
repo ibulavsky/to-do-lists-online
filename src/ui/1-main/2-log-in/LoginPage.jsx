@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Button, Checkbox, Form, Icon, Input} from "antd"
+import {Button, Checkbox, Form, Icon, Input, Modal} from "antd"
 import styles from './Login.module.css'
 import {login} from "../../../bll/auth/Auth-thunks"
 import {connect} from "react-redux"
 import {compose} from "redux"
+import {setError} from "../../../bll/auth/AuthReducer"
 
 class LoginPage extends Component {
 
@@ -17,8 +18,18 @@ class LoginPage extends Component {
         });
     };
 
+
+
     render() {
-        let {isAuth, loading} = this.props;
+        let {errorMessage} = this.props;
+
+        if (errorMessage) {
+            Modal.error({
+                title: 'This is an error message',
+                content: errorMessage,
+            });
+            this.props.setError('')
+        }
 
         const {getFieldDecorator} = this.props.form;
         return (<div className={styles.loginForm}>
@@ -71,7 +82,7 @@ class LoginPage extends Component {
 
 const WrappedNormalLoginForm = compose(
     Form.create({name: 'normal_login'}),
-    connect(null, {login})
+    connect(null, {login, setError})
 )(LoginPage);
 
 export default WrappedNormalLoginForm

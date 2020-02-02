@@ -14,12 +14,12 @@ const Main = () => {
         dispatch(getAuthUserData())
     }, [])
 
-    const {isAuth, loading, email} = useSelector(store => store.auth)
+    const {isAuth, loading, email, errorMessage} = useSelector(store => store.auth)
 
     return (
         <>
             <Layout style={{background: '#fafafa', minHeight: '100vh'}}>
-                <HeaderPage isAuth={isAuth} loading={loading} email={email}/>
+                <HeaderPage isAuth={isAuth} loading={loading} email={email} />
                 {loading ? <>
                         <Icon type="loading" style={{fontSize: '50px'}}/>
                     </>
@@ -29,7 +29,7 @@ const Main = () => {
                                 <ListsContainer/>
                             </>
                             : <>
-                                <LoginPage/>
+                                <LoginPage errorMessage={errorMessage}/>
                             </>
                         }
                     </>
