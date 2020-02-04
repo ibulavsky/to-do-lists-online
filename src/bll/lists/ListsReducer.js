@@ -87,11 +87,11 @@ const listsReducer = (state = initialState, action) => {
         case UPDATE_LIST:
             return {
                 ...state,
-                lists: state.lists.map(wl => {
-                    if (wl.id === action.listId) {
-                        return {...wl, ...action.payload}
+                lists: state.lists.map(l => {
+                    if (l.id === action.listId) {
+                        return {...l, ...action.payload}
                     }
-                    return wl
+                    return l
                 })
             };
         case ADD_TASK:
@@ -157,7 +157,7 @@ export const setTasks = (listId, tasks) => ({type: SET_TASKS, listId, tasks})
 
 export const addList = newList => ({type: ADD_LIST, newList})
 export const deleteList = listId => ({type: DELETE_LIST, listId})
-export const updateList = (listId, payload) => ({type: UPDATE_LIST, listId, payload})
+export const updateListSuccess = (listId, payload) => ({type: UPDATE_LIST, listId, payload})
 export const addTask = (newTask, listId) => ({type: ADD_TASK, newTask, listId})
 export const deleteTask = (listId, taskId) => ({type: DELETE_TASK, listId, taskId})
 export const updateTask = (listId, taskId, payload) => ({type: UPDATE_TASK, listId, taskId, payload})

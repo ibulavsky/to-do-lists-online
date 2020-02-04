@@ -34,8 +34,8 @@ const HeaderPage = ({isAuth, loading, email}) => {
 
     return (<>
             <PageHeader style={stylesAnt}
-                        title={'My wish lists'}
-                        subTitle={'What are you wanna from Santa?'}
+                        title={'My to do lists'}
+                        subTitle={'What are you wanna to do?'}
                         {...config}>
                 {isAuth
                     ? <figure className={styles.avatar}>

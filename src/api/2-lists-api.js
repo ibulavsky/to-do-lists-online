@@ -8,7 +8,10 @@ export const listsAPI = {
     addList(list) {
         return instance.post('/todo-lists', {...list}).then(response => response.data.data.item)
     },
-    getWishes(listId) {
+    updateTitleList(listId, payload) {
+        return instance.put(`/todo-lists/` + listId, {...payload}).then(response => response.data)
+    },
+    getTasks(listId) {
         return instance.get(`/todo-lists/${listId}/tasks`).then(response => response.data.items)
     },
 }

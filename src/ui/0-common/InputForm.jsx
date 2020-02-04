@@ -15,9 +15,7 @@ const InputForm = ({itemTitle, changeItemTitle, addItem, undo}) => {
         }
     }
 
-    const onClose = () => {
-        setError(null)
-    }
+    const onClose = () => setError(null)
 
     const onUndo = () => {
         setError(null)

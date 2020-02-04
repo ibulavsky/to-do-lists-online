@@ -5,9 +5,9 @@ import ListHeader from "./0-ListHeader/ListHeader"
 import ListFooter from "./2-ListFooter/ListFooter"
 import styles from './listWrapper.module.css'
 import {useDispatch} from "react-redux"
-import {deleteList, updateList} from "../../../../bll/lists/ListsReducer"
+import {deleteList} from "../../../../bll/lists/ListsReducer"
 import InputForm from "../../../0-common/InputForm"
-import {getTasks} from "../../../../bll/lists/Lists-thunks"
+import {getTasks, updateList} from "../../../../bll/lists/Lists-thunks"
 
 const ListWrapper = ({l, ...props}) => {
 
@@ -21,7 +21,7 @@ const ListWrapper = ({l, ...props}) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-      dispatch(getTasks(l.id))
+        dispatch(getTasks(l.id))
     }, [dispatch, l.id])
 
     const tasks = l.tasks && l.tasks
@@ -37,23 +37,24 @@ const ListWrapper = ({l, ...props}) => {
                     return true
             }
         })
-    //
-    // // component did update
-    // useEffect(() => {
-    //     // changeWishes(l.tasks)
-    // }, [l.tasks])
-    //
-    // useEffect(() => {
-    //     changeListTitle(l.name)
-    // }, [l.name])
 
-    const deleteList = () => {
-        //     dispatch(deleteWishesList(l.id))
+    // component did update
+    useEffect(() => {
+        // changeTask(l.tasks)
+    }, [l.tasks])
+
+    useEffect(() => {
+        changeListTitle(l.title)
+    }, [l.title])
+
+    const onDeleteList = () => {
+        dispatch(deleteList(l.id))
     }
-    //
-    const updateList = (itemTitle) => {
-        //     dispatch(updateWishesList(l.id, {name: itemTitle}))
-        //     setInputShow(false)
+
+    const onUpdateList = (itemTitle) => {
+        console.log(l.id)
+        dispatch(updateList(l.id, {title: itemTitle}))
+        setInputShow(false)
     }
 
     return (
@@ -61,7 +62,7 @@ const ListWrapper = ({l, ...props}) => {
             <div className={styles.container}>
                 <header className={styles.titleWrap}>
                     {isInputShow ? <>
-                            <InputForm itemTitle={listTitle} changeItemTitle={changeListTitle} addItem={updateList}
+                            <InputForm itemTitle={listTitle} changeItemTitle={changeListTitle} addItem={onUpdateList}
                                        undo={() => {
                                            setInputShow(false)
                                        }}/>
@@ -69,7 +70,7 @@ const ListWrapper = ({l, ...props}) => {
                         : <>
                             <h3 className={styles.title} style={{}}>{`${l.title}`}</h3>
                             <Icon type="edit" className={styles.icon} onClick={() => setInputShow(true)}/>
-                            <Popconfirm placement="right" title={confirmText} onConfirm={deleteList} okText="Yes"
+                            <Popconfirm placement="right" title={confirmText} onConfirm={onDeleteList} okText="Yes"
                                         cancelText="No">
                                 <Icon type="delete" className={styles.icon}/>
                             </Popconfirm>
