@@ -20,4 +20,10 @@ export const listsAPI = {
     addTask(listId, task) {
         return instance.post(`/todo-lists/${listId}/tasks`, {...task}).then(response => response.data)
     },
+    deleteTask(listId, taskId) {
+        return instance.delete(`/todo-lists/${listId}/tasks/${taskId}`).then(response => response.data)
+    },
+    updateTask(listId, taskId, payload) {
+        return instance.put(`/todo-lists/${listId}/tasks/${taskId}`, {...payload}).then(response => response.data)
+    },
 }
