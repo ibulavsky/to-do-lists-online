@@ -5,9 +5,8 @@ import ListHeader from "./0-ListHeader/ListHeader"
 import ListFooter from "./2-ListFooter/ListFooter"
 import styles from './listWrapper.module.css'
 import {useDispatch} from "react-redux"
-import {deleteList} from "../../../../bll/lists/ListsReducer"
 import InputForm from "../../../0-common/InputForm"
-import {getTasks, updateList} from "../../../../bll/lists/Lists-thunks"
+import {deleteList, getTasks, updateList} from "../../../../bll/lists/Lists-thunks"
 
 const ListWrapper = ({l, ...props}) => {
 

@@ -2,6 +2,7 @@ const SET_LISTS = 'ListsAPP/ListsReducer/SET_LISTS';
 const SET_LISTS_LOADING = 'ListsAPP/ListsReducer/SET_LISTS_LOADING';
 const SET_ERROR_MESSAGE = 'ListsAPP/ListsReducer/SET_ERROR_MESSAGE';
 const SET_TASKS = 'ListsAPP/ListsReducer/SET_TASKS';
+const SET_LOADING_TASKS = 'ListsAPP/ListsReducer/SET_LOADING_TASKS';
 
 
 const ADD_LIST = 'ListsAPP/ListsReducer/ADD_LIST';
@@ -62,6 +63,19 @@ const listsReducer = (state = initialState, action) => {
                     if (l.id === action.listId) {
                         return {
                             ...l, tasks: [...action.tasks]
+                        }
+                    } else {
+                        return l
+                    }
+                }),
+            };
+        case SET_LOADING_TASKS:
+            return {
+                ...state,
+                lists: state.lists.map(l => {
+                    if (l.id === action.listId) {
+                        return {
+                            ...l, taskLoading: action.taskLoading
                         }
                     } else {
                         return l
@@ -153,11 +167,12 @@ export const setLists = lists => ({type: SET_LISTS, lists})
 export const setListsLoading = listsLoading => ({type: SET_LISTS_LOADING, listsLoading})
 export const setErrorMessage = errorMessage => ({type: SET_ERROR_MESSAGE, errorMessage})
 export const setTasks = (listId, tasks) => ({type: SET_TASKS, listId, tasks})
+export const setLoadingTasks = (listId, taskLoading) => ({type: SET_LOADING_TASKS, listId, taskLoading})
 
 
-export const addList = newList => ({type: ADD_LIST, newList})
-export const deleteList = listId => ({type: DELETE_LIST, listId})
+export const addListSuccess = newList => ({type: ADD_LIST, newList})
+export const deleteListSuccess = listId => ({type: DELETE_LIST, listId})
 export const updateListSuccess = (listId, payload) => ({type: UPDATE_LIST, listId, payload})
-export const addTask = (newTask, listId) => ({type: ADD_TASK, newTask, listId})
+export const addTaskSuccess = (newTask, listId) => ({type: ADD_TASK, newTask, listId})
 export const deleteTask = (listId, taskId) => ({type: DELETE_TASK, listId, taskId})
 export const updateTask = (listId, taskId, payload) => ({type: UPDATE_TASK, listId, taskId, payload})

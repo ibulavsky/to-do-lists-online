@@ -1,10 +1,11 @@
 import React, {useState} from "react"
 import AddForm from "../../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
-import {addTask} from "../../../../../bll/lists/ListsReducer"
+import {addTaskSuccess} from "../../../../../bll/lists/ListsReducer"
 import styles from './listHeader.module.css'
 import {Alert} from "antd"
 import {validateItem} from "../../../../0-common/validateForm"
+import {addTask} from "../../../../../bll/lists/Lists-thunks"
 
 const ListHeader = (props) => {
     const [errorMessage, setError] = useState(null)
@@ -20,7 +21,6 @@ const ListHeader = (props) => {
                 const newTask = {
                     title: taskTitle,
                     priority: 2,
-                    id: +new Date()
                 };
                 dispatch(addTask(newTask, props.listId));
                 changeTaskTitle('')

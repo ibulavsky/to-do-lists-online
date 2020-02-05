@@ -3,7 +3,7 @@ import AddForm from "../../../0-common/AddForm"
 import {useDispatch} from "react-redux"
 import {validateItem} from "../../../0-common/validateForm"
 import {Alert} from "antd"
-import {addLists} from "../../../../bll/lists/Lists-thunks"
+import {addList} from "../../../../bll/lists/Lists-thunks"
 
 const AddListsFormContainer = () => {
 
@@ -19,7 +19,7 @@ const AddListsFormContainer = () => {
                 const newWishList = {
                     title: itemName
                 };
-                dispatch(addLists(newWishList))
+                dispatch(addList(newWishList))
                 changeItemName('')
             }
         },
