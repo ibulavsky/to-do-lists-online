@@ -5,7 +5,7 @@ import styles from './Header.module.css'
 import {useDispatch} from "react-redux"
 import {logout} from "../../../bll/auth/Auth-thunks"
 
-const HeaderPage = ({isAuth, loading, email}) => {
+const HeaderPage = ({isAuth, loading, email, isListsLimit}) => {
 
     const dispatch = useDispatch()
 
@@ -20,11 +20,13 @@ const HeaderPage = ({isAuth, loading, email}) => {
     }
 
     let config;
-    if (isAuth) {
+    if (isAuth && !isListsLimit) {
         config = {
-            extra: [
-                <AddFormContainer/>
-            ]
+            extra: [<AddFormContainer/>]
+        }
+    } else if (isListsLimit) {
+        config = {
+            extra: [<div> Max quantity Lists is equals 10. </div>]
         }
     } else {
         config = {
@@ -50,10 +52,7 @@ const HeaderPage = ({isAuth, loading, email}) => {
                             Log out
                         </Button>
                     </figure>
-                    : <>
-
-                    </>
-                }
+                    : null}
             </PageHeader>
         </>
     )

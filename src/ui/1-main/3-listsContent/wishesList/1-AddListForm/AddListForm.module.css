@@ -3,8 +3,7 @@
     flex-direction: row;
     /*justify-content: space-between;*/
 }
-
 .alertMessage {
-    width: 307px;
-    margin: 8px 0 8px 8px
+    width: 313px;
+    margin: 8px 0 8px 0
 }

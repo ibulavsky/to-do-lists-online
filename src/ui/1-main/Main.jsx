@@ -17,11 +17,12 @@ const Main = () => {
     }, [dispatch])
 
     const {isAuth, loading, email, errorMessage} = useSelector(store => store.auth)
+    const {isLoading, isListsLimit} = useSelector(store => store.lists)
 
     return (
         <>
             <Layout style={{background: '#fafafa', minHeight: '100vh'}}>
-                <HeaderPage isAuth={isAuth} loading={loading} email={email}/>
+                <HeaderPage isAuth={isAuth} loading={loading} email={email} isListsLimit={isListsLimit} isLoading={isLoading}/>
                 {!loading && isAuth && <ListsContainer/>}
                 {!loading && !isAuth && <LoginPage errorMessage={errorMessage}/>}
                 {loading && <Icon type="loading" style={{fontSize: '50px'}}/>}

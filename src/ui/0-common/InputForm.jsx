@@ -28,7 +28,7 @@ const InputForm = ({itemTitle, changeItemTitle, addItem, undo}) => {
             {errorMessage &&
             <Alert
                 message={null}
-                style={{width: '100%', marginBottom: '8px', color: '#000'}}
+                style={{width: 'calc(100% - 30px)', margin: '0 45px 10px 15px', color: '#000'}}
                 description={errorMessage}
                 type="warning"
                 closable

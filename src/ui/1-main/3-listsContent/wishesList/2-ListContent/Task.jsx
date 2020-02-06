@@ -31,7 +31,7 @@ const Task = ({taskItem, listId}) => {
         setChangeModeShow(false)
     }
     const onChangeTaskCompleted = (e) => {
-        dispatch(updateTask(listId, taskItem.id, {...taskItem, completed: (e.target.checked)}))
+        dispatch(updateTask(listId, taskItem.id, {...taskItem, status: (e.target.checked)}))
     }
 
     return (
@@ -43,7 +43,7 @@ const Task = ({taskItem, listId}) => {
                                                   undo={() => setChangeModeShow(false)}/>
                                    </>
                                    : <>
-                                       <Checkbox className={styles.check} checked={taskItem.completed}
+                                       <Checkbox className={styles.check} checked={taskItem.status}
                                                  onChange={(e) => onChangeTaskCompleted(e)}> </Checkbox>
                                        <article className={styles.text}>
                                            {taskItem.title}

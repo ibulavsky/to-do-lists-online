@@ -1,7 +1,7 @@
 import {Button, Input} from "antd"
 import React from "react"
 
-const AddForm = ({itemName, item, onChangeItemName, addItem}) => {
+const AddForm = ({itemName, item, onChangeItemName, addItem, ...props}) => {
 
     return (
         <>
@@ -10,7 +10,7 @@ const AddForm = ({itemName, item, onChangeItemName, addItem}) => {
                    onChange={onChangeItemName}
                    onPressEnter={addItem}
                    style={{width: '200px', marginRight: '20px'}}/>
-            <Button key="1" style={{marginLeft: '8px'}} onClick={addItem}>Add {item}</Button>
+            <Button key="1" style={{marginLeft: '8px'}} onClick={addItem} disabled={props.isLoading}>Add {item}</Button>
         </>
     )
 }

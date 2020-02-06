@@ -1,4 +1,5 @@
 const SET_LISTS = 'ListsAPP/ListsReducer/SET_LISTS';
+const SET_LISTS_LIMITATION = 'ListsAPP/ListsReducer/SET_LISTS_LIMITATION';
 const SET_LISTS_LOADING = 'ListsAPP/ListsReducer/SET_LISTS_LOADING';
 const SET_ERROR_MESSAGE = 'ListsAPP/ListsReducer/SET_ERROR_MESSAGE';
 const SET_TASKS = 'ListsAPP/ListsReducer/SET_TASKS';
@@ -45,6 +46,11 @@ const listsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 lists: [...action.lists],
+            };
+            case SET_LISTS_LIMITATION:
+            return {
+                ...state,
+                isListsLimit: action.isLimitation,
             };
         case SET_LISTS_LOADING:
             return {
@@ -164,6 +170,7 @@ const listsReducer = (state = initialState, action) => {
 export default listsReducer
 
 export const setLists = lists => ({type: SET_LISTS, lists})
+export const setListsLimitation = isLimitation => ({type: SET_LISTS_LIMITATION, isLimitation})
 export const setListsLoading = listsLoading => ({type: SET_LISTS_LOADING, listsLoading})
 export const setErrorMessage = errorMessage => ({type: SET_ERROR_MESSAGE, errorMessage})
 export const setTasks = (listId, tasks) => ({type: SET_TASKS, listId, tasks})
