@@ -11,7 +11,7 @@ const Task = ({taskItem, listId}) => {
     const [taskTitle, changeTaskTitle] = useState(taskItem.title)
     const {Option} = Select;
 
-    const text = 'Are you sure to delete this wish?'
+    const text = 'Are you sure to delete this task?'
 
     useEffect(() => {
         changeTaskTitle(taskItem.title)

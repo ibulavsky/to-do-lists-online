@@ -1,57 +1,39 @@
-import React, {useState} from "react"
-import AddForm from "../../../../0-common/AddForm"
-import {useDispatch} from "react-redux"
-import {addTaskSuccess} from "../../../../../bll/lists/ListsReducer"
-import styles from './listHeader.module.css'
-import {Alert} from "antd"
-import {validateItem} from "../../../../0-common/validateForm"
-import {addTask} from "../../../../../bll/lists/Lists-thunks"
+import React, {useEffect, useState} from "react"
+import styles from "../listWrapper.module.css"
+import InputForm from "../../../../0-common/InputForm"
+import {Icon, Popconfirm} from "antd"
 
-const ListHeader = (props) => {
-    const [errorMessage, setError] = useState(null)
-    const [taskTitle, changeTaskTitle] = useState('')
 
-    const dispatch = useDispatch()
+const ListHeader = ({isInputShow, setInputShow, onUpdateList, onDeleteList, l}) => {
 
-    const addFormCallbacks = {
-        addItem: () => {
-            if (validateItem(taskTitle)) {
-                setError(validateItem(taskTitle))
-            } else {
-                const newTask = {
-                    title: taskTitle,
-                    priority: 2,
-                };
-                dispatch(addTask(newTask, props.listId));
-                changeTaskTitle('')
-            }
-        },
-        onChangeItemName: (e) => {
-            setError(null)
-            changeTaskTitle(e.currentTarget.value)
-        }
-    }
 
-    const onClose = () => {
-        setError(null)
-    }
+    const [listTitle, changeListTitle] = useState(l.title)
+
+    useEffect(() => {
+        changeListTitle(l.title)
+    }, [l.title])
+
+    const confirmText = 'Are you sure to delete this list?'
 
     return (
-        <>
-            {errorMessage && <Alert
-                message={null}
-                className={styles.alertMessage}
-                description={errorMessage}
-                type="warning"
-                closable
-                onClose={onClose}
-                showIcon
-            />
+        <header className={styles.titleWrap}>
+            {isInputShow ? <>
+                    <InputForm itemTitle={listTitle} changeItemTitle={changeListTitle} addItem={onUpdateList}
+                               undo={() => {
+                                   setInputShow(false)
+                               }}/>
+                </>
+                : <>
+                    <h3 className={styles.title} style={{}}>{`${l.title}`}</h3>
+                    <Icon type="edit" className={styles.icon} onClick={() => setInputShow(true)}/>
+                    <Popconfirm placement="right" title={confirmText} onConfirm={onDeleteList} okText="Yes"
+                                cancelText="No">
+                        <Icon type="delete" className={styles.icon}/>
+                    </Popconfirm>
+                </>
             }
-            <div className={styles.listHeader}>
-                <AddForm item={'wish'} itemName={taskTitle} {...addFormCallbacks} />
-            </div>
-        </>
+        </header>
+
     )
 }
 
