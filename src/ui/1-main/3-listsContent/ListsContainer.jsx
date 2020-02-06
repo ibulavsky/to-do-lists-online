@@ -2,8 +2,9 @@ import React, {useEffect} from "react"
 import ListWrapper from "./wishesList/ListWrapper"
 import {useDispatch, useSelector} from "react-redux"
 import {getLists} from "../../../bll/lists/Lists-thunks"
-import {Icon} from "antd"
+import {Icon, Modal} from "antd"
 import styles from './ListsContainer.module.css'
+import {setErrorMessage} from "../../../bll/lists/ListsReducer"
 
 const ListsContainer = () => {
 
@@ -11,10 +12,10 @@ const ListsContainer = () => {
 
     useEffect(() => {
         dispatch(getLists())
-    }, [])
+    }, [dispatch])
 
 
-    const {isListsLoading, lists} = useSelector((store) => store.lists)
+    const {isListsLoading, errorMessage, lists} = useSelector((store) => store.lists)
 
     const listsArr = lists.map((l) => {
         if (l) {
@@ -22,6 +23,14 @@ const ListsContainer = () => {
         }
         return null
     })
+
+    if (errorMessage) {
+        Modal.error({
+            title: 'This is an error message',
+            content: errorMessage,
+        });
+        dispatch(setErrorMessage(''))
+    }
 
     return (<>
             {isListsLoading

@@ -15,25 +15,25 @@ const UPDATE_TASK = 'ListsAPP/ListsReducer/UPDATE_TASK';
 
 let initialState = {
     lists: [
-        {
-            name: 'ListTOP',
-            id: '98e8465e-894f-4491-905a-2111f823b728',
-            tasks: [
-                {
-                    id: '515f5f49-0a8b-4fd3-a298-b96426c062cc',
-                    title: 'ads',
-                    description: null,
-                    completed: false,
-                    todoListId: '98e8465e-894f-4491-905a-2111f823b728',
-                    order: 0,
-                    status: 0,
-                    priority: 1,
-                    startDate: null,
-                    deadline: null,
-                    addedDate: '2019-12-11T18:20:58.023'
-                }
-            ]
-        }
+        // {
+        //     name: 'ListTOP',
+        //     id: '98e8465e-894f-4491-905a-2111f823b728',
+        //     tasks: [
+        //         {
+        //             id: '515f5f49-0a8b-4fd3-a298-b96426c062cc',
+        //             title: 'ads',
+        //             description: null,
+        //             completed: false,
+        //             todoListId: '98e8465e-894f-4491-905a-2111f823b728',
+        //             order: 0,
+        //             status: 0,
+        //             priority: 1,
+        //             startDate: null,
+        //             deadline: null,
+        //             addedDate: '2019-12-11T18:20:58.023'
+        //         }
+        //     ]
+        // }
     ],
     isListsLoading: false,
     errorMessage: '',

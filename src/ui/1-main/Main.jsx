@@ -14,7 +14,7 @@ const Main = () => {
 
     useEffect(() => {
         dispatch(getAuthUserData())
-    }, [])
+    }, [dispatch])
 
     const {isAuth, loading, email, errorMessage} = useSelector(store => store.auth)
 
